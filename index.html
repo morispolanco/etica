@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moris Polanco - Consultoría en Ética de IA y Transformación Educativa</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --text-color: #34495e;
+            --light-bg: #ecf0f1;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 100px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="10" r="0.5" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--secondary-color);
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .app-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--secondary-color);
+        }
+
+        .app-card:hover {
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+
+        .btn-primary-custom {
+            background: var(--secondary-color);
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary-custom:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+        }
+
+        .experience-section {
+            background: var(--light-bg);
+            padding: 80px 0;
+        }
+
+        .contact-section {
+            background: var(--primary-color);
+            color: white;
+            padding: 80px 0;
+        }
+
+        .form-control {
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            padding: 12px;
+        }
+
+        .form-control:focus {
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25);
+        }
+
+        .navbar {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            color: var(--primary-color) !important;
+        }
+
+        .nav-link {
+            color: var(--text-color) !important;
+            font-weight: 500;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--secondary-color) !important;
+        }
+
+        .stats-card {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .stats-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            margin: 1rem 0;
+        }
+
+        .alert-custom {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            z-index: 1000;
+            min-width: 300px;
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 60px 0 40px;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .alert-custom {
+                position: relative;
+                top: 0;
+                right: 0;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Alerta personalizada para mensajes -->
+    <div id="alertMessage" class="alert alert-custom alert-dismissible fade show" role="alert">
+        <span id="alertText"></span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#home">Moris Polanco</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#servicios">Servicios</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#experiencia">Experiencia</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#aplicaciones">Aplicaciones</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="container">
+            <div class="row align-items-center min-vh-100">
+                <div class="col-lg-6 hero-content">
+                    <h1 class="display-4 fw-bold mb-4">Consultoría Especializada en Ética de IA y Transformación Educativa</h1>
+                    <p class="lead mb-4">Doctor en Filosofía con más de 30 años de experiencia académica y desarrollador de aplicaciones de IA. Ayudo a instituciones y empresas a implementar tecnología inteligente con responsabilidad ética y visión humanista.</p>
+                    <div class="d-flex gap-3">
+                        <a href="#servicios" class="btn btn-light btn-lg">Conocer Servicios</a>
+                        <a href="#contacto" class="btn btn-outline-light btn-lg">Contactar</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <div class="stats-card">
+                        <div class="row">
+                            <div class="col-6 mb-3">
+                                <div class="stats-number">24+</div>
+                                <div>Libros Publicados</div>
+                            </div>
+                            <div class="col-6 mb-3">
+                                <div class="stats-number">900+</div>
+                                <div>Aplicaciones IA</div>
+                            </div>
+                            <div class="col-6">
+                                <div class="stats-number">30+</div>
+                                <div>Años de Experiencia</div>
+                            </div>
+                            <div class="col-6">
+                                <div class="stats-number">∞</div>
+                                <div>Impacto Educativo</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="servicios" class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Servicios de Consultoría</h2>
+                <p class="lead">Soluciones estratégicas para la implementación responsable de la inteligencia artificial</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h4>Ética e Implementación de IA</h4>
+                        <p>Auditoría ética de sistemas de IA, desarrollo de marcos éticos y capacitación para equipos técnicos. Especializado en identificar riesgos morales en algoritmos y proponer soluciones responsables.</p>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check text-success"></i> Auditorías éticas</li>
+                            <li><i class="fas fa-check text-success"></i> Marco normativo</li>
+                            <li><i class="fas fa-check text-success"></i> Capacitación especializada</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h4>Transformación Educativa con IA</h4>
+                        <p>Diseño e implementación de soluciones educativas basadas en inteligencia artificial. Desarrollo de herramientas personalizadas para instituciones educativas que mejoran el aprendizaje y la evaluación.</p>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check text-success"></i> Diseño curricular con IA</li>
+                            <li><i class="fas fa-check text-success"></i> Herramientas educativas</li>
+                            <li><i class="fas fa-check text-success"></i> Formación docente</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <h4>Estrategia y Pensamiento Crítico</h4>
+                        <p>Asesoría estratégica para instituciones y empresas en la adopción de tecnologías emergentes. Enfoque en el desarrollo de pensamiento crítico y toma de decisiones éticas en la era digital.</p>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check text-success"></i> Consultoría estratégica</li>
+                            <li><i class="fas fa-check text-success"></i> Talleres ejecutivos</li>
+                            <li><i class="fas fa-check text-success"></i> Análisis de tendencias</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experiencia" class="experience-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Experiencia y Credenciales</h2>
+                <p class="lead">Una trayectoria académica y técnica que respalda cada proyecto</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="mb-4">
+                        <h4><i class="fas fa-university text-primary"></i> Formación Académica</h4>
+                        <ul class="list-unstyled">
+                            <li class="mb-3">
+                                <strong>Doctor en Filosofía</strong><br>
+                                Universidad de Navarra, Cum Laude por unanimidad
+                            </li>
+                            <li class="mb-3">
+                                <strong>Diploma en Lingüística y Literatura</strong><br>
+                                Instituto para la Cooperación Iberoamericana, Madrid
+                            </li>
+                            <li class="mb-3">
+                                <strong>Licenciado en Letras y Filosofía</strong><br>
+                                Universidad Rafael Landívar
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4><i class="fas fa-briefcase text-primary"></i> Experiencia Profesional</h4>
+                        <ul class="list-unstyled">
+                            <li class="mb-3">
+                                <strong>Director Académico y de Investigaciones</strong><br>
+                                Instituto Fe y Libertad (2019-2023)
+                            </li>
+                            <li class="mb-3">
+                                <strong>Director del Área de Humanidades</strong><br>
+                                Universidad Francisco Marroquín (2008-2021)
+                            </li>
+                            <li class="mb-3">
+                                <strong>Profesor e Investigador</strong><br>
+                                Múltiples universidades en Guatemala y España
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="mb-4">
+                        <h4><i class="fas fa-book text-primary"></i> Publicaciones Destacadas</h4>
+                        <ul class="list-unstyled">
+                            <li class="mb-2">• IA en el aula. Guía para el uso responsable (2023)</li>
+                            <li class="mb-2">• Razonamiento crítico (2ª Edición ampliada, 2024)</li>
+                            <li class="mb-2">• Filosofía en diálogos (2023)</li>
+                            <li class="mb-2">• Teorías Éticas (2012)</li>
+                            <li class="mb-2">• 24 libros publicados en total</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4><i class="fas fa-award text-primary"></i> Reconocimientos</h4>
+                        <ul class="list-unstyled">
+                            <li class="mb-2">• Miembro de número de la Academia Guatemalteca de la Lengua, correspondiente de la Real Academia Española</li>
+                            <li class="mb-2">• Premio Stillman al mejor ensayo (2016, 2018)</li>
+                            <li class="mb-2">• Jurado Internacional en Olimpiadas de Filosofía</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Applications Section -->
+    <section id="aplicaciones" class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Aplicaciones de IA Desarrolladas</h2>
+                <p class="lead">Demostraciones prácticas de la integración entre filosofía y tecnología</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="app-card">
+                        <h5><i class="fas fa-robot text-primary"></i> Tutor de Redacción AI</h5>
+                        <p>Plataforma inteligente que ayuda a mejorar las habilidades de escritura mediante análisis automático y retroalimentación personalizada.</p>
+                        <a href="https://tutor-de-redaccion.vercel.app/" target="_blank" class="btn btn-sm btn-outline-primary">Ver Demo</a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="app-card">
+                        <h5><i class="fas fa-balance-scale text-primary"></i> Analizador de Contenido Ético</h5>
+                        <p>Herramienta que evalúa el contenido textual desde una perspectiva ética, identificando sesgos y proponiendo mejoras.</p>
+                        <a href="https://ethical-content-analyzer.vercel.app/" target="_blank" class="btn btn-sm btn-outline-primary">Ver Demo</a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="app-card">
+                        <h5><i class="fas fa-comments text-primary"></i> Diálogos Filosóficos</h5>
+                        <p>Aplicación interactiva que simula conversaciones filosóficas para el aprendizaje y la reflexión crítica.</p>
+                        <a href="https://dialogos-filosoficos.lovable.app/" target="_blank" class="btn btn-sm btn-outline-primary">Ver Demo</a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="app-card">
+                        <h5><i class="fas fa-brain text-primary"></i> LectorInteligente</h5>
+                        <p>Plataforma de comprensión lectora adaptativa que personaliza ejercicios según el nivel académico del estudiante.</p>
+                        <a href="https://lector-inteligente-bachillerato.lovable.app/" target="_blank" class="btn btn-sm btn-outline-primary">Ver Demo</a>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <p class="text-muted">Más de 900 aplicaciones disponibles en mi repositorio de GitHub</p>
+                <a href="https://github.com/morispolanco" target="_blank" class="btn btn-primary-custom">
+                    <i class="fab fa-github"></i> Ver Repositorio Completo
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Testimonios</h2>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="testimonial-card">
+                        <p class="fst-italic">"La consultoría del Dr. Polanco transformó nuestra aproximación a la IA en el aula. Su perspectiva ética es invaluable."</p>
+                        <div class="d-flex align-items-center mt-3">
+                            <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                <i class="fas fa-user text-white"></i>
+                            </div>
+                            <div class="ms-3">
+                                <strong>Dr. Carlos M.</strong><br>
+                                <small>Universidad Privada</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="testimonial-card">
+                        <p class="fst-italic">"Su combinación de conocimiento filosófico y técnico es única. Logró resolver problemas éticos complejos en nuestros sistemas."</p>
+                        <div class="d-flex align-items-center mt-3">
+                            <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                <i class="fas fa-user text-white"></i>
+                            </div>
+                            <div class="ms-3">
+                                <strong>Laura S.</strong><br>
+                                <small>Directora de Tecnología</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="testimonial-card">
+                        <p class="fst-italic">"Los talleres de pensamiento crítico con IA han mejorado significativamente las capacidades de nuestro equipo."</p>
+                        <div class="d-flex align-items-center mt-3">
+                            <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                <i class="fas fa-user text-white"></i>
+                            </div>
+                            <div class="ms-3">
+                                <strong>Roberto G.</strong><br>
+                                <small>CEO Startup Educativa</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contacto" class="contact-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title text-white">Iniciemos una Conversación</h2>
+                <p class="lead text-white-50">Transformemos juntos el futuro de la educación y la tecnología</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <form id="contactForm" action="https://formspree.io/f/xwpqbdnn" method="POST">
+                        <div class="mb-3">
+                            <input type="text" class="form-control" name="nombre" placeholder="Nombre completo" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="email" class="form-control" name="email" placeholder="Correo electrónico" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" name="empresa" placeholder="Empresa/Institución">
+                        </div>
+                        <div class="mb-3">
+                            <select class="form-control" name="servicio" required>
+                                <option value="">Seleccionar servicio de interés</option>
+                                <option value="etica-ia">Ética e Implementación de IA</option>
+                                <option value="transformacion-educativa">Transformación Educativa con IA</option>
+                                <option value="estrategia">Estrategia y Pensamiento Crítico</option>
+                                <option value="otro">Otro</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <textarea class="form-control" name="mensaje" rows="4" placeholder="Describa su proyecto o consulta" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-light btn-lg w-100" id="submitBtn">
+                            <span id="btnText">Enviar Mensaje</span>
+                            <span id="btnSpinner" class="spinner-border spinner-border-sm d-none" role="status"></span>
+                        </button>
+                    </form>
+                </div>
+                <div class="col-lg-6">
+                    <div class="contact-info">
+                        <h4 class="text-white mb-4">Información de Contacto</h4>
+                        <div class="mb-3">
+                            <i class="fas fa-envelope me-3"></i>
+                            <a href="mailto:morispolanco@gmail.com" class="text-white-50 text-decoration-none">morispolanco@gmail.com</a>
+                        </div>
+                        <div class="mb-3">
+                            <i class="fas fa-phone me-3"></i>
+                            <a href="tel:+50237648910" class="text-white-50 text-decoration-none">+502 3764 8910</a>
+                        </div>
+                        <div class="mb-3">
+                            <i class="fas fa-globe me-3"></i>
+                            <a href="https://morispolanco.github.io/mp/" target="_blank" class="text-white-50 text-decoration-none">morispolanco.github.io/mp/</a>
+                        </div>
+                        <div class="mb-3">
+                            <i class="fab fa-github me-3"></i>
+                            <a href="https://github.com/morispolanco" target="_blank" class="text-white-50 text-decoration-none">github.com/morispolanco</a>
+                        </div>
+                        <div class="mb-3">
+                            <i class="fab fa-linkedin me-3"></i>
+                            <a href="https://www.linkedin.com/in/moris-polanco-barrera/" target="_blank" class="text-white-50 text-decoration-none">linkedin.com/in/moris-polanco-barrera</a>
+                        </div>
+                        <div class="mb-3">
+                            <i class="fab fa-x-twitter me-3"></i>
+                            <a href="https://x.com/polanco_moris" target="_blank" class="text-white-50 text-decoration-none">@polanco_moris</a>
+                        </div>
+                        
+                        <h5 class="text-white mt-4 mb-3">Horario de Consultoría</h5>
+                        <p class="text-white-50">Lunes a Viernes: 11:00 a. m. a 5:00 p. m. (GMT-6)<br>
+                        Sesiones disponibles en línea o por videoconferencia</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p>&copy; 2024 Moris Polanco. Todos los derechos reservados.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="https://www.linkedin.com/in/moris-polanco-barrera/" target="_blank" class="text-white me-3"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://x.com/polanco_moris" target="_blank" class="text-white me-3"><i class="fab fa-x-twitter"></i></a>
+                    <a href="https://github.com/morispolanco" target="_blank" class="text-white"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Función para mostrar alertas personalizadas
+        function showAlert(message, type = 'success') {
+            const alertDiv = document.getElementById('alertMessage');
+            const alertText = document.getElementById('alertText');
+            
+            alertText.textContent = message;
+            alertDiv.className = `alert alert-${type} alert-dismissible fade show alert-custom`;
+            alertDiv.style.display = 'block';
+            
+            // Ocultar alerta después de 5 segundos
+            setTimeout(() => {
+                alertDiv.style.display = 'none';
+            }, 5000);
+        }
+
+        // Smooth scrolling para enlaces de navegación
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Manejo del formulario con Formspree
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submitBtn');
+            const btnText = document.getElementById('btnText');
+            const btnSpinner = document.getElementById('btnSpinner');
+            
+            // Mostrar estado de carga
+            btnText.textContent = 'Enviando...';
+            btnSpinner.classList.remove('d-none');
+            submitBtn.disabled = true;
+            
+            // Enviar formulario usando Fetch API
+            fetch(this.action, {
+                method: 'POST',
+                body: new FormData(this),
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Éxito
+                    showAlert('¡Mensaje enviado con éxito! Me pondré en contacto pronto.', 'success');
+                    this.reset();
+                } else {
+                    // Error del servidor
+                    throw new Error('Error al enviar el mensaje');
+                }
+            })
+            .catch(error => {
+                // Error de red u otro
+                showAlert('Hubo un error al enviar el mensaje. Por favor, intenta nuevamente.', 'danger');
+                console.error('Error:', error);
+            })
+            .finally(() => {
+                // Restaurar estado del botón
+                btnText.textContent = 'Enviar Mensaje';
+                btnSpinner.classList.add('d-none');
+                submitBtn.disabled = false;
+            });
+        });
+
+        // Efecto de scroll en la navbar
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                navbar.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
+                navbar.style.backdropFilter = 'blur(10px)';
+            } else {
+                navbar.style.backgroundColor = 'white';
+                navbar.style.backdropFilter = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
